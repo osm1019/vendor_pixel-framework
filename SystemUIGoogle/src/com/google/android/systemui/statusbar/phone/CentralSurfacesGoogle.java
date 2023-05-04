@@ -123,6 +123,8 @@ import com.google.android.systemui.dreamliner.DockObserver;
 import com.google.android.systemui.reversecharging.ReverseChargingViewController;
 import com.google.android.systemui.smartspace.SmartSpaceController;
 import com.google.android.systemui.statusbar.KeyguardIndicationControllerGoogle;
+import com.android.systemui.statusbar.policy.BurnInProtectionController;
+import com.android.systemui.model.SysUiState;
 
 import java.util.Optional;
 import java.util.concurrent.Executor;
@@ -150,6 +152,7 @@ public class CentralSurfacesGoogle extends CentralSurfacesImpl {
     private boolean mChargingAnimShown;
     private Context mContext;
 
+  
     @SuppressWarnings("OptionalUsedAsFieldOrParameterType")
     @Inject
     public CentralSurfacesGoogle(
@@ -217,7 +220,7 @@ public class CentralSurfacesGoogle extends CentralSurfacesImpl {
             ExtensionController extensionController,
             UserInfoControllerImpl userInfoControllerImpl,
             PhoneStatusBarPolicy phoneStatusBarPolicy,
-            KeyguardIndicationController keyguardIndicationController,
+            KeyguardIndicationControllerGoogle keyguardIndicationControllerGoogle,
             DemoModeController demoModeController,
             Lazy<NotificationShadeDepthController> notificationShadeDepthControllerLazy,
             StatusBarTouchableRegionManager statusBarTouchableRegionManager,
@@ -230,6 +233,7 @@ public class CentralSurfacesGoogle extends CentralSurfacesImpl {
             LockscreenShadeTransitionController lockscreenShadeTransitionController,
             FeatureFlags featureFlags,
             KeyguardUnlockAnimationController keyguardUnlockAnimationController,
+            @Main Handler mainHandler,
             @Main DelayableExecutor delayableExecutor,
             @Main MessageRouter messageRouter,
             WallpaperManager wallpaperManager,
@@ -244,9 +248,10 @@ public class CentralSurfacesGoogle extends CentralSurfacesImpl {
             WallpaperNotifier wallpaperNotifier,
             SmartSpaceController smartSpaceController,
             Optional<ReverseChargingViewController> reverseChargingViewControllerOptional,
-            KeyguardIndicationControllerGoogle keyguardIndicationControllerGoogle,
-            TunerService tunerService) {
-        super(context, notificationsController, fragmentService, lightBarController,
+            BurnInProtectionController burnInProtectionController,
+            SysUiState sysUiState) {
+
+         super(context, notificationsController, fragmentService, lightBarController,
                 autoHideController, statusBarWindowController, statusBarWindowStateController,
                 keyguardUpdateMonitor, statusBarSignalPolicy, pulseExpansionHandler,
                 notificationWakeUpCoordinator, keyguardBypassController, keyguardStateController,
@@ -266,15 +271,17 @@ public class CentralSurfacesGoogle extends CentralSurfacesImpl {
                 pluginManager, shadeController, statusBarKeyguardViewManager, viewMediatorCallback,
                 initController, timeTickHandler, pluginDependencyProvider, keyguardDismissUtil,
                 extensionController, userInfoControllerImpl, phoneStatusBarPolicy,
-                keyguardIndicationController, demoModeController,
+                keyguardIndicationControllerGoogle, demoModeController,
                 notificationShadeDepthControllerLazy, statusBarTouchableRegionManager,
                 notificationIconAreaController, brightnessSliderFactory,
                 screenOffAnimationController, wallpaperController, ongoingCallController,
                 statusBarHideIconsForBouncerManager, lockscreenShadeTransitionController,
-                featureFlags, keyguardUnlockAnimationController, delayableExecutor,
+                featureFlags, keyguardUnlockAnimationController, mainHandler, delayableExecutor,
                 messageRouter, wallpaperManager, startingSurfaceOptional, activityLaunchAnimator,
                 jankMonitor, deviceStateManager, wiredChargingRippleController,
-                dreamManager, cameraLauncherLazy, lightRevealScrimViewModelLazy, tunerService);
+                dreamManager, cameraLauncherLazy, lightRevealScrimViewModelLazy, 
+                burnInProtectionController, sysUiState);
+
         mContext = context;
         mBatteryStateChangeCallback = new BatteryController.BatteryStateChangeCallback() {
             @Override
@@ -344,3 +351,4 @@ public class CentralSurfacesGoogle extends CentralSurfacesImpl {
         mSmartSpaceController.reloadData();
     }
 }
+

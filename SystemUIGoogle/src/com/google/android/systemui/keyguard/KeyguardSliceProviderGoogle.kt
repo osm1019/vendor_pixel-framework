@@ -128,7 +128,7 @@ class KeyguardSliceProviderGoogle : KeyguardSliceProvider(), SmartSpaceUpdateLis
         }
     }
 
-    private fun addWeather(listBuilder: ListBuilder) {
+    override protected fun addWeather(listBuilder: ListBuilder) {
         val weatherCard = smartSpaceData!!.weatherCard
         if (weatherCard != null && !weatherCard.isExpired) {
             val builder = RowBuilder(weatherUri).setTitle(weatherCard.title)

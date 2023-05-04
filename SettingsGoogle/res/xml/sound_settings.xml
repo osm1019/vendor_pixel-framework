@@ -6,6 +6,11 @@
     android:title="@string/sound_settings"
     settings:keywords="@string/keywords_sounds">
 
+       <Preference
+        android:key="sound_animation"
+        android:layout="@layout/sound_animation" 
+        android:order="-999"/>
+    
     <PreferenceCategory
         android:key="remote_media_group"
         android:order="-185"
@@ -63,6 +68,14 @@
         android:title="@string/alarm_volume_option_title"
         settings:controller="com.android.settings.notification.AlarmVolumePreferenceController" />
 
+    <!-- Live Volume Steps -->
+    <Preference
+        android:key="volume_steps"
+        android:title="@string/volume_steps_title"
+        android:summary="@string/volume_steps_summary"
+        android:order="-135"
+        android:fragment="com.android.settings.xtended.VolumeSteps" />
+
     <com.android.settingslib.RestrictedPreference
         android:fragment="com.android.settings.notification.zen.ZenModeSettings"
         android:key="zen_mode"
@@ -83,7 +96,7 @@
 
     <!-- Phone ringtone for Slot2 -->
     <com.android.settings.DefaultRingtonePreference
-        android:key="ringtone2"
+        android:key="phone_ringtone2"
         android:title="@string/ringtone_title"
         android:dialogTitle="@string/ringtone_title"
         android:summary="@string/summary_placeholder"
@@ -113,6 +126,30 @@
         android:title="@string/accessibility_vibration_settings_title"
         settings:controller="com.android.settings.accessibility.VibrationPreferenceController"
         settings:keywords="@string/keywords_vibration" />
+
+    <!-- Ringtone vibration pattern -->
+    <ListPreference
+        android:key="vibration_pattern"
+        android:title="@string/vibration_pattern_title"
+        android:order="-85"
+        android:entries="@array/vibration_pattern_entries"
+        android:entryValues="@array/vibration_pattern_values"/>
+
+    <!-- Custom ringtone vibration pattern preference -->
+    <Preference
+        android:key="custom_vibration_pattern"
+        android:title="@string/custom_vibration_pattern_title"
+        android:summary="@string/custom_vibration_pattern_summary"
+        android:order="-83"
+        android:fragment="com.android.settings.sound.CustomVibrationPreferenceFragment"
+        android:visibility="gone"/>
+
+    <com.android.settingslib.PrimarySwitchPreference
+        android:key="gesture_prevent_ringing_sound"
+        android:title="@string/gesture_prevent_ringing_sound_title"
+        android:order="-80"
+        android:fragment="com.android.settings.gestures.PreventRingingGestureSettings"
+        settings:controller="com.android.settings.gestures.PreventRingingParentPreferenceController"/>
 
     <com.android.settingslib.PrimarySwitchPreference
         android:fragment="com.android.settings.gestures.PreventRingingGestureSettings"
@@ -145,6 +182,13 @@
         android:summary="@string/clear_calling_topintro"
         android:title="@string/clear_calling_title"
         settings:controller="com.google.android.settings.notification.ClearCallingPreferenceController" />
+
+    <com.xtended.support.preferences.SystemSettingSwitchPreference
+        android:key="show_app_volume"
+        android:title="@string/app_volume_title"
+        android:summary="@string/app_volume_summary"
+        android:defaultValue="false"
+        android:order="-5"/>
 
     <SwitchPreference
         android:key="dial_pad_tones"
