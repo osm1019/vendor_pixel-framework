@@ -51,7 +51,7 @@
             android:title="@string/screen_timeout"
             settings:controller="com.android.settings.display.ScreenTimeoutPreferenceController" />
 
-        <com.xtended.support.preferences.SystemSettingListPreference
+        <com.colt.enigma.preference.SystemSettingListPreference
             android:key="lockscreen_timeout"
             android:title="@string/lockscreen_timeout_title"
             android:entries="@array/screen_timeout_entries"
@@ -62,22 +62,6 @@
 
     <PreferenceCategory
         android:title="@string/category_name_appearance">
-
-        <com.android.settings.display.darkmode.DarkModePreference
-            android:fragment="com.android.settings.display.darkmode.DarkModeSettingsFragment"
-            android:key="dark_ui_mode"
-            android:title="@string/dark_ui_mode"
-            android:widgetLayout="@null"
-            settings:controller="com.android.settings.display.DarkUIPreferenceController"
-            settings:keywords="@string/keywords_dark_ui_mode"
-            settings:widgetLayout="@null" />
-
-        <Preference
-            android:fragment="com.android.settings.dream.DreamSettings"
-            android:key="screensaver"
-            android:title="@string/screensaver_settings_title"
-            settings:controller="com.android.settings.display.ScreenSaverPreferenceController"
-            settings:keywords="@string/keywords_screensaver" />
 
         <Preference
             android:fragment="com.android.settings.accessibility.TextReadingPreferenceFragment"
@@ -186,8 +170,6 @@
             android:summary="@string/touch_sensitivity_summary"
             settings:controller="com.android.settings.display.TouchSensitivityPreferenceController" />
 
-
-
         <SwitchPreference
             android:key="show_operator_name"
             android:summary="@string/show_operator_name_summary"
@@ -213,8 +195,12 @@
             android:key="tap_to_wake"
             android:summary="@string/tap_to_wake_summary"
             android:title="@string/tap_to_wake" />
+            
+             <SwitchPreference
+            android:key="enable_blurs_on_windows"
+            android:title="@string/window_blurs"/>
 
-        <com.xtended.support.preferences.SystemSettingSwitchPreference
+        <com.colt.enigma.preference.SystemSettingSwitchPreference
             android:key="proximity_on_wake"
             android:title="@string/proximity_wake_title"
             android:summary="@string/proximity_wake_summary"

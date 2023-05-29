@@ -14,7 +14,7 @@
             android:title="@string/lock_screen_notifications_title"
             settings:keywords="@string/keywords_lock_screen_notif"/>
 
-        <com.xtended.support.preferences.SecureSettingListPreference
+        <com.colt.enigma.preference.SecureSettingListPreference
             android:key="face_unlock_method"
             android:title="@string/face_unlock_method_title"
             android:summary="%s"
@@ -85,13 +85,6 @@
         settings:controller="com.android.settings.display.AmbientDisplayWhenToShowPreferenceController"
         android:order="1000">
 
-        <com.android.settingslib.RestrictedSwitchPreference
-            android:key="ambient_display_always_on"
-            android:summary="@string/doze_always_on_summary"
-            android:title="@string/doze_always_on_title"
-            settings:controller="com.android.settings.display.AmbientDisplayAlwaysOnPreferenceController"
-            settings:userRestriction="no_ambient_display" />
-
        <com.android.settingslib.RestrictedSwitchPreference
             android:key="ambient_display_always_on"
             android:title="@string/doze_always_on_title"
@@ -100,7 +93,7 @@
             settings:controller="com.android.settings.display.AmbientDisplayAlwaysOnPreferenceController"
             settings:userRestriction="no_ambient_display" />
 
-        <com.xtended.support.preferences.SystemSettingSwitchPreference
+       <com.colt.enigma.preference.SystemSettingSwitchPreference
             android:key="doze_on_charge"
             android:defaultValue="false"
             android:title="@string/doze_on_charge_title"
@@ -135,12 +128,11 @@
             settings:controller="com.android.settings.display.AmbientDisplayNotificationsPreferenceController" />
 
         <!-- Controls wake for notifications -->
-        <com.xtended.support.preferences.SecureSettingSwitchPreference
+        <com.colt.enigma.preference.SecureSettingSwitchPreference
             android:key="doze_for_notifications"
             android:title="@string/doze_title"
             android:summary="@string/doze_summary"
             android:defaultValue="true" />
-
         <Preference
             android:key="ambient_display_custom"
             android:title="@string/advanced_settings" />
