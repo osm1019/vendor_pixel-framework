@@ -211,7 +211,7 @@
             android:title="@string/high_touch_sensitivity_title"
             android:summary="@string/high_touch_sensitivity_summary"
             android:defaultValue="false"
-            settings:controller="com.android.settings.custom.touch.HighTouchSensitivitySettingsPreferenceController" />
+            settings:controller="com.android.settings.display.TouchSensitivityPreferenceController." />
 
         <ListPreference
             android:key="theme"
