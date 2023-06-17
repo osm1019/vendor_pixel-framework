@@ -9,7 +9,7 @@
         android:key="security_status_wheel"
         android:layout="@layout/preference_security_status"
         android:order="-3"
-        settings:controller="com.google.android.settings.security.SecurityStatusPreferenceController"
+        settings:controller="com.android.settings.security.TopLevelSecurityEntryPreferenceController"
         settings:searchable="false"
         settings:selectable="false" />
 
