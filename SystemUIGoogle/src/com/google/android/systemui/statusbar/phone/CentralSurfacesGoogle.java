@@ -129,7 +129,8 @@ import com.google.android.systemui.smartspace.SmartSpaceController;
 import com.google.android.systemui.statusbar.KeyguardIndicationControllerGoogle;
 
 // Custom Features
-import com.android.systemui.model.SysUiState;
+
+
 
 import java.util.Optional;
 import java.util.concurrent.Executor;
@@ -257,8 +258,7 @@ public class CentralSurfacesGoogle extends CentralSurfacesImpl {
             UserTracker userTracker,
             Provider<FingerprintManager> fingerprintManagerProvider,
             TunerService tunerService,
-            @Main Handler refreshNavbarHandler,
-            SysUiState sysUiState) {
+            @Main Handler refreshNavbarHandler) {
         super(context, notificationsController, fragmentService, lightBarController,
                 autoHideController, statusBarWindowController, statusBarWindowStateController,
                 keyguardUpdateMonitor, statusBarSignalPolicy, pulseExpansionHandler,
@@ -289,7 +289,7 @@ public class CentralSurfacesGoogle extends CentralSurfacesImpl {
                 jankMonitor, deviceStateManager, wiredChargingRippleController,
                 dreamManager, cameraLauncherLazy, lightRevealScrimViewModelLazy, 
                 alternateBouncerInteractor, userTracker, fingerprintManagerProvider,
-                tunerService, refreshNavbarHandler, sysUiState);
+                tunerService, refreshNavbarHandler);
         mContext = context;
         mBatteryStateChangeCallback = new BatteryController.BatteryStateChangeCallback() {
             @Override
