@@ -87,14 +87,6 @@
             settings:keywords="@string/keywords_display_night_display" />
 
         <Preference
-            android:key="livedisplay"
-            android:title="@*android:string/live_display_title"
-            android:summary="@string/live_display_summary"
-            settings:controller="com.android.settings.livedisplay.LiveDisplayPreferenceController">
-            <intent android:action="com.android.settings.LIVEDISPLAY_SETTINGS" />
-        </Preference>
-
-        <Preference
             android:fragment="com.android.settings.display.ColorModePreferenceFragment"
             android:key="color_mode"
             android:title="@string/color_mode_title"
@@ -120,52 +112,34 @@
             settings:controller="com.android.settings.display.ScreenResolutionController"
             settings:keywords="@string/keywords_screen_resolution" />
 
+        <com.android.settings.display.DcDimmingPreference
+            android:key="dc_dimming"
+            android:title="@string/dc_dimming_title"
+            android:fragment="com.android.settings.display.DcDimmingSettings"
+            android:widgetLayout="@null"
+            settings:widgetLayout="@null"
+            settings:keywords="@string/keywords_display_dc_dimming"/>
+
         <SwitchPreference
             android:key="display_white_balance"
             android:summary="@string/display_white_balance_summary"
             android:title="@string/display_white_balance_title"
             settings:controller="com.android.settings.display.DisplayWhiteBalancePreferenceController" />
 
-        <ListPreference
-            android:key="min_refresh_rate"
-            android:title="@string/min_refresh_rate_title"
-            android:summary="@string/summary_placeholder"
-            settings:controller="com.android.settings.display.MinRefreshRatePreferenceController" />
-        <ListPreference
-            android:key="max_refresh_rate"
-            android:title="@string/max_refresh_rate_title"
-            android:summary="@string/summary_placeholder"
-            settings:controller="com.android.settings.display.MaxRefreshRatePreferenceController"/>
-
         <SwitchPreference
             android:key="peak_refresh_rate"
             android:summary="@string/peak_refresh_rate_summary"
             android:title="@string/peak_refresh_rate_title"
             settings:controller="com.android.settings.display.PeakRefreshRatePreferenceController" />
-
-        <com.android.settings.custom.preference.SystemSettingListPreference
-            android:key="display_cutout_hidden"
-            android:title="@string/display_cutout_mode_title"
-            android:summary="%s"
-            android:entries="@array/display_cutout_mode_entries"
-            android:entryValues="@array/display_cutout_mode_values"
-            android:defaultValue="0"
-            settings:controller="com.android.settings.display.DisplayCutoutPreferenceController" />
-
+            
+        <!-- Min/max/preferred refresh rate -->
         <Preference
-            android:key="display_cutout_force_fullscreen_settings"
-            android:title="@string/display_cutout_force_fullscreen_title"
-            android:summary="@string/display_cutout_force_fullscreen_summary"
-            android:fragment="com.android.settings.display.DisplayCutoutForceFullscreenSettings"
-            settings:controller="com.android.settings.display.DisplayCutoutForceFullscreenPreferenceController" />
-
-        <SwitchPreference
-            android:key="touch_sensitivity"
-            android:summary="@string/touch_sensitivity_summary"
-            android:title="@string/touch_sensitivity_title"
-            settings:controller="com.google.android.settings.touch.TouchSensitivityPreferenceController"
-            settings:keywords="@string/keywords_touch_sensitivity" />
-
+            android:key="refresh_rate"
+            android:title="@string/refresh_rate_title"
+            android:summary="@string/summary_placeholder"
+            android:fragment="com.android.settings.display.RefreshRateSettingsFragment"
+            settings:controller="com.android.settings.display.RefreshRatePreferenceController" />            
+     
         <SwitchPreference
             android:key="show_operator_name"
             android:summary="@string/show_operator_name_summary"
@@ -182,46 +156,61 @@
 
         <SwitchPreference
             android:key="tap_to_wake"
-            android:summary="@string/tap_to_wake_summary"
-            android:title="@string/tap_to_wake" />
+            android:title="@string/tap_to_wake"
+            android:summary="@string/tap_to_wake_summary"/>
 
-        <com.android.settings.custom.preference.SystemSettingSwitchPreference
-            android:key="high_touch_polling_rate_enable"
-            android:title="@string/high_touch_polling_rate_title"
-            android:summary="@string/high_touch_polling_rate_summary"
-            android:defaultValue="false"
-            settings:controller="com.android.settings.custom.touch.HighTouchPollingRateSettingsPreferenceController" />
-
-        <com.android.settings.custom.preference.SystemSettingSwitchPreference
-            android:key="high_touch_sensitivity_enable"
-            android:title="@string/high_touch_sensitivity_title"
-            android:summary="@string/high_touch_sensitivity_summary"
-            android:defaultValue="false"
-            settings:controller="com.android.settings.custom.touch.HighTouchSensitivitySettingsPreferenceController" />
-
-        <!-- Double tap to sleep -->
-        <com.android.settings.custom.preference.SystemSettingSwitchPreference
+        <com.arrow.support.preferences.SystemSettingSwitchPreference
             android:key="double_tap_sleep_gesture"
-            android:title="@string/status_bar_double_tap_to_sleep_title"
-            android:summary="@string/status_bar_double_tap_to_sleep_summary"
+            android:title="@string/double_tap_sleep_gesture_title"
+            android:summary="@string/double_tap_sleep_gesture_summary"
             android:defaultValue="false" />
 
-        <com.android.settings.custom.preference.GlobalSettingSwitchPreference
+        <com.arrow.support.preferences.SystemSettingSwitchPreference
             android:key="wake_when_plugged_or_unplugged"
             android:title="@string/wake_when_plugged_or_unplugged_title"
             android:summary="@string/wake_when_plugged_or_unplugged_summary"
             android:defaultValue="@*android:bool/config_unplugTurnsOnScreen" />
 
+        <Preference
+            android:key="display_cutout_force_fullscreen_settings"
+            android:title="@string/display_cutout_force_fullscreen_title"
+            android:summary="@string/display_cutout_force_fullscreen_summary"
+            android:fragment="com.android.settings.display.DisplayCutoutForceFullscreenSettings"
+            settings:controller="com.android.settings.display.DisplayCutoutForceFullscreenPreferenceController" />
+
         <ListPreference
             android:key="theme"
-            android:summary="@string/summary_placeholder"
-            android:title="@string/device_theme" />
+            android:title="@string/device_theme"
+            android:summary="@string/summary_placeholder"/>
 
         <Preference
-            android:fragment="com.android.settings.display.VrDisplayPreferencePicker"
             android:key="vr_display_pref"
-            android:title="@string/display_vr_pref_title" />
+            android:title="@string/display_vr_pref_title"
+            android:fragment="com.android.settings.display.VrDisplayPreferencePicker"/>
+    </PreferenceCategory>
 
+    <PreferenceCategory
+        android:title="@string/customization_category_title">
+
+        <Preference
+            android:key="icon_manager"
+            android:title="@string/icon_manager_title"
+            android:summary="@string/icon_manager_summary">
+            <intent android:action="com.android.settings.action.STATUS_BAR_TUNER" />
+        </Preference>
+
+        <com.arrow.support.preferences.SecureSettingSwitchPreference
+            android:key="qs_show_data_usage"
+            android:title="@string/qs_show_data_usage_title"
+            android:summary="@string/qs_show_data_usage_summary"
+            android:defaultValue="true" />
+
+        <Preference
+            android:key="network_traffic_settings"
+            android:title="@string/network_traffic_title"
+            android:summary="@string/network_traffic_summary"
+            android:order="25"
+            android:fragment="com.android.settings.arrow.NetworkTrafficSettings"/>
     </PreferenceCategory>
 
 </PreferenceScreen>
