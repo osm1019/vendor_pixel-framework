@@ -81,7 +81,8 @@ public interface QSModuleGoogle {
             DeviceControlsController deviceControlsController,
             WalletController walletController,
             SafetyController safetyController,
-            @Named(RBC_AVAILABLE) boolean isReduceBrightColorsAvailable) {
+            @Named(RBC_AVAILABLE) boolean isReduceBrightColorsAvailable,
+            BatteryController batteryController) {
         AutoTileManager manager = new AutoTileManagerGoogle(
                 context,
                 autoAddTrackerBuilder,
@@ -98,6 +99,7 @@ public interface QSModuleGoogle {
                 walletController,
                 safetyController,
                 isReduceBrightColorsAvailable,
+                batteryController
         );
         manager.init();
         return manager;
